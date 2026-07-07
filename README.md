@@ -1,18 +1,20 @@
-# 📊 Sales Prediction API - Docker
+ 📊 Satış Tahmini API - Docker
 
-A microservices-based sales prediction system built with Python, featuring machine learning predictions, web scraping capabilities, and a web dashboard. The entire application is containerized using Docker and Docker Compose for easy deployment.
+Python ile geliştirilmiş, makine öğrenmesi tahminleri, web kazıma yetenekleri ve web panosu içeren mikro hizmetler tabanlı bir satış tahmin sistemi. Tüm uygulama, kolay dağıtım için Docker ve Docker Compose kullanılarak konteynerize edilmiştir.
 
-## 🎯 Project Overview
+## 🎯 Proje Özeti
 
-This project implements a complete sales prediction pipeline with multiple services:
+Bu proje, birden fazla hizmetiyle tam bir satış tahmin akışı uygular:
 
-- **ML Service**: Machine learning model for sales predictions
-- **Scraper Service**: Web scraping for data collection
-- **Web Dashboard**: Flask-based web interface for visualization and analysis
-- **Database**: PostgreSQL for persistent data storage
-- **Cache**: Redis for caching and message queuing
+- **ML Hizmeti**: Satış tahminleri için makine öğrenmesi modeli
+- **Kazıyıcı Hizmeti**: Veri toplamak için web kazıma
+- **Web Panosu**: Görselleştirme ve analiz için Flask tabanlı web arayüzü
+- **Veritabanı**: Kalıcı veri depolama için PostgreSQL
+- **Önbellek**: Önbelleğe alma ve mesaj kuyruğu için Redis
 
-## 🏗️ Architecture
+## 🏗️ Mimari
+
+```
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -32,246 +34,227 @@ This project implements a complete sales prediction pipeline with multiple servi
 └──────────┘
 ```
 
-## 📋 Services
 
-### 1. **ML Service**
-Machine learning service for sales prediction
-- Depends on: Redis, PostgreSQL
-- Handles prediction requests
-- Caches results in Redis
 
-### 2. **Scraper Service**
-Web scraping module for data collection
-- Depends on: Redis
-- Collects data from web sources
-- Stores data in cache and database
+## 📋 Hizmetler
 
-### 3. **Web Dashboard**
-Flask-based web application for user interaction
+### 1. **ML Hizmeti**
+Satış tahmini için makine öğrenmesi hizmeti
+- Bağımlılıklar: Redis, PostgreSQL
+- Tahmin isteklerini işler
+- Sonuçları Redis'te önbelleğe alır
+
+### 2. **Kazıyıcı Hizmeti**
+Veri toplamak için web kazıma modülü
+- Bağımlılıklar: Redis
+- Web kaynaklarından veri toplar
+- Veri önbelleğe ve veritabanına kaydeder
+
+### 3. **Web Panosu**
+Kullanıcı etkileşimi için Flask tabanlı web uygulaması
 - Port: **5000**
-- Depends on: PostgreSQL
-- Provides visualization and analysis interface
-- User-friendly interface for predictions
+- Bağımlılıklar: PostgreSQL
+- Görselleştirme ve analiz arayüzü sağlar
+- Tahminler için kullanıcı dostu arayüz
 
-### 4. **Database (PostgreSQL)**
-Persistent data storage
-- Image: `postgres:15`
-- Database: `pricedb`
-- Initialized with: `./db/init.sql`
-- Persistent volume: `postgres_data`
+### 4. **Veritabanı (PostgreSQL)**
+Kalıcı veri depolama
+- İmaj: `postgres:15`
+- Veritabanı: `pricedb`
+- Başlatma: `./db/init.sql`
+- Kalıcı birim: `postgres_data`
 
-### 5. **Redis Cache**
-In-memory data store and message broker
-- Image: `redis:alpine`
-- Used for caching and service communication
+### 5. **Redis Önbelleği**
+Bellek içi veri deposu ve mesaj aracı
+- İmaj: `redis:alpine`
+- Önbelleğe alma ve hizmet iletişimi için kullanılır
 
-## 🚀 Quick Start
+## 🚀 Hızlı Başlangıç
 
-### Prerequisites
+### Gereksinimler
 - Docker
 - Docker Compose
 
-### Installation & Setup
+### Kurulum & Başlatma
 
-1. **Clone the repository**
+1. **Depoyu klonlayın**
 ```bash
 git clone https://github.com/sevval-345/Sales-Prediction-api-Docker.git
 cd Sales-Prediction-api-Docker
 ```
 
-2. **Build and start all services**
+2. **Tüm hizmetleri derleyin ve başlatın**
 ```bash
 docker-compose up -d
 ```
 
-3. **Check service status**
+3. **Hizmet durumunu kontrol edin**
 ```bash
 docker-compose ps
 ```
 
-4. **Access the web dashboard**
-Open your browser and navigate to:
+4. **Web panosuna erişin**
+Tarayıcınızı açın ve şuraya gidin:
 ```
 http://localhost:5000
 ```
 
-### Stopping Services
+### Hizmetleri Durdurma
 
 ```bash
 docker-compose down
 ```
 
-To remove volumes as well:
+Birimler de dahil olmak üzere kaldırmak için:
 ```bash
 docker-compose down -v
 ```
 
-## 📁 Project Structure
+## 📁 Proje Yapısı
 
 ```
 Sales-Prediction-api-Docker/
-├── docker-compose.yml          # Compose configuration for all services
-├── requirements.txt            # Root dependencies
+├── docker-compose.yml          # Tüm hizmetler için Compose yapılandırması
+├── requirements.txt            # Kök bağımlılıklar
 │
-├── ml-service/                 # Machine Learning Service
+├── ml-service/                 # Makine Öğrenmesi Hizmeti
 │   ├── Dockerfile
 │   └── requirements.txt
 │
-├── scraper/                    # Web Scraping Service
+├── scraper/                    # Web Kazıma Hizmeti
 │   ├── Dockerfile
 │   └── requirements.txt
 │
-├── web-dashboard/              # Flask Web Dashboard
+├── web-dashboard/              # Flask Web Panosu
 │   ├── Dockerfile
 │   ├── app.py
 │   └── requirements.txt
 │
-└── db/                         # Database Configuration
-    └── init.sql               # PostgreSQL initialization script
+└── db/                         # Veritabanı Yapılandırması
+    └── init.sql               # PostgreSQL başlatma betiği
 ```
 
-## 🔧 Configuration
+## 🔧 Yapılandırma
 
-### Environment Variables
-Database configuration in `docker-compose.yml`:
+### Ortam Değişkenleri
+`docker-compose.yml` içinde veritabanı yapılandırması:
 - `POSTGRES_DB`: `pricedb`
 - `POSTGRES_PASSWORD`: `password`
 
-You can modify these variables in the compose file for production use.
+Üretim kullanımı için bu değişkenleri compose dosyasında değiştirebilirsiniz.
 
-### Database Initialization
-Place your SQL initialization scripts in `./db/init.sql`. This file is automatically executed when PostgreSQL starts.
+### Veritabanı Başlatması
+SQL başlatma betiklerinizi `./db/init.sql` içine yerleştirin. Bu dosya PostgreSQL başladığında otomatik olarak çalıştırılır.
 
-## 📦 Dependencies
+## 📦 Bağımlılıklar
 
-### Core Requirements
-- `redis` - Redis Python client for caching
-- `requests` - HTTP library for API calls and scraping
-- `psycopg2-binary` - PostgreSQL adapter for Python
+### Temel Gereksinimler
+- `redis` - Önbelleğe alma için Redis Python istemcisi
+- `requests` - API çağrıları ve kazıma için HTTP kütüphanesi
+- `psycopg2-binary` - Python için PostgreSQL adaptörü
 
-### Services
+### Hizmetler
 - PostgreSQL 15
 - Redis (Alpine)
 - Python 3.x
 
-## 🐳 Docker Commands
+## 🐳 Docker Komutları
 
-### View Logs
+### Günlükleri Görüntüle
 ```bash
-# All services
+# Tüm hizmetler
 docker-compose logs -f
 
-# Specific service
+# Belirli hizmet
 docker-compose logs -f web-dashboard
 docker-compose logs -f ml-service
 docker-compose logs -f scraper
 ```
 
-### Rebuild Services
+### Hizmetleri Yeniden Derle
 ```bash
 docker-compose build
 docker-compose up -d
 ```
 
-### Execute Commands in Container
+### Konteyner İçinde Komut Çalıştır
 ```bash
-# Web dashboard
+# Web panosu
 docker-compose exec web-dashboard python app.py
 
-# ML service
+# ML hizmeti
 docker-compose exec ml-service python app.py
 
-# Database
+# Veritabanı
 docker-compose exec db psql -U postgres -d pricedb
 ```
 
-## 💻 Development
+## 💻 Geliştirme
 
-### Local Development Setup (Optional)
-If you want to run services locally without Docker:
+### Yerel Geliştirme Kurulumu (İsteğe Bağlı)
+Docker olmadan yerel olarak hizmetleri çalıştırmak istiyorsanız:
 
-1. Install Python 3.8+
-2. Install PostgreSQL 15
-3. Install Redis
-4. Create virtual environment:
+1. Python 3.8+ yükleyin
+2. PostgreSQL 15 yükleyin
+3. Redis yükleyin
+4. Sanal ortam oluşturun:
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows'ta: venv\Scripts\activate
 ```
-5. Install dependencies:
+5. Bağımlılıkları yükleyin:
 ```bash
 pip install -r requirements.txt
 ```
 
-## 🔐 Security Considerations
+## 🔐 Güvenlik Notları
 
-⚠️ **Production Use**: 
-- Change default PostgreSQL password
-- Use environment variables for sensitive data
-- Implement proper authentication in Flask
-- Use Docker secrets for sensitive configurations
-- Consider using `.env` files (excluded from version control)
+⚠️ **Üretim Kullanımı**: 
+- Varsayılan PostgreSQL şifresini değiştirin
+- Hassas veriler için ortam değişkenlerini kullanın
+- Flask'te uygun kimlik doğrulaması uygulayın
+- Docker sırları kullanın
+- `.env` dosyaları kullanmayı düşünün (sürüm kontrolünden hariç)
 
-## 📝 API & Usage
+## 📝 API & Kullanım
 
-Detailed usage examples and API endpoints should be documented in each service directory:
-- `ml-service/README.md` - ML predictions API
-- `scraper/README.md` - Scraper configuration
-- `web-dashboard/README.md` - Dashboard features
+Ayrıntılı kullanım örnekleri ve API uç noktaları her hizmet dizininde belgelenmiş olmalıdır:
+- `ml-service/README.md` - ML tahminleri API
+- `scraper/README.md` - Kazıyıcı yapılandırması
+- `web-dashboard/README.md` - Pano özellikleri
 
-## 🐛 Troubleshooting
+## 🐛 Sorun Giderme
 
-### Port 5000 Already in Use
-Change the port mapping in `docker-compose.yml`:
+### Port 5000 Zaten Kullanımda
+`docker-compose.yml` içinde port eşlemesini değiştirin:
 ```yaml
 web-dashboard:
   ports:
-    - "8000:5000"  # Access at localhost:8000
+    - "8000:5000"  # localhost:8000 adresinden erişin
 ```
 
-### Database Connection Issues
-Verify PostgreSQL is running:
+### Veritabanı Bağlantı Sorunları
+PostgreSQL'in çalışıp çalışmadığını doğrulayın:
 ```bash
 docker-compose logs db
 ```
 
-### Redis Connection Issues
-Check Redis service:
+### Redis Bağlantı Sorunları
+Redis hizmetini kontrol edin:
 ```bash
 docker-compose logs redis
 ```
 
-### Services Not Starting
-Rebuild images:
+### Hizmetler Başlamıyor
+İmajları yeniden derleyin:
 ```bash
 docker-compose build --no-cache
 docker-compose up -d
 ```
 
-## 📊 Monitoring & Maintenance
+## 📊 İzleme & Bakım
 
-### Check Database Size
-```bash
-docker-compose exec db psql -U postgres -d pricedb -c "SELECT pg_size_pretty(pg_database_size('pricedb'));"
-```
-
-### Backup Database
-```bash
-docker-compose exec db pg_dump -U postgres -d pricedb > backup.sql
-```
-
-### Restore Database
-```bash
-docker-compose exec -T db psql -U postgres -d pricedb < backup.sql
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+### Veritabanı Boyutunu Kontrol Edin
 
 
 **Last Updated**: July 2026
