@@ -259,26 +259,12 @@ docker-compose up -d
 4. Dalı push edin
 5. Bir Pull Request oluşturun
 
-## 📄 Lisans
 
-Bu proje açık kaynaklıdır ve MIT Lisansı altında kullanılabilir.
 
-## 👤 Yazar
 
-**sevval-345**
-
-## 📞 Destek
-
-Sorunlar, sorular veya katkılar için lütfen:
-- GitHub'da bir issue açın
-- Mevcut belgeleri kontrol edin
-- Docker ve hizmet günlüklerini gözden geçirin
-
----
 
 **Son Güncelleme**: Temmuz 2026
 
-Mutlu Tahminler! 🚀📈
 
 
 
