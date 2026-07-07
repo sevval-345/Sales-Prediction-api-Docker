@@ -252,11 +252,6 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
-## 📊 İzleme & Bakım
-
-### Veritabanı Boyutunu Kontrol Edin
 
 
 **Last Updated**: July 2026
-
-Happy Predicting! 🚀📈
