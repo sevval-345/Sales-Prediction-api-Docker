@@ -273,22 +273,6 @@ docker-compose exec -T db psql -U postgres -d pricedb < backup.sql
 4. Push to the branch
 5. Create a Pull Request
 
-## 📄 License
-
-This project is open source and available under the MIT License.
-
-## 👤 Author
-
-**sevval-345**
-
-## 📞 Support
-
-For issues, questions, or contributions, please:
-- Open an issue on GitHub
-- Check existing documentation
-- Review Docker and service logs
-
----
 
 **Last Updated**: July 2026
 
