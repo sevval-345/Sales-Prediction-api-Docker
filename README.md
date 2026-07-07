@@ -16,7 +16,7 @@ Bu proje, birden fazla hizmetiyle tam bir satış tahmin akışı uygular:
 
 ```
 
-```
+
 ┌─────────────────────────────────────────────────┐
 │         Web Dashboard (Flask)                   │
 │         Port: 5000                              │
